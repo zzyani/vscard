@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const copyEmailButton = document.querySelector("#copyEmailButton");
 
   const hoverButtons = document.querySelectorAll(
-    ".action-button, .github-button"
+    ".action-button, .github-button, .portfolio-button"
   );
 
   image?.addEventListener("error", () => {
