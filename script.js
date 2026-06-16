@@ -4,18 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const image = document.querySelector(".profile-image");
   const emailText = document.querySelector("#emailText");
   const copyEmailButton = document.querySelector("#copyEmailButton");
-  const actionButtons = document.querySelectorAll(".action-button");
+
+  const hoverButtons = document.querySelectorAll(
+    ".action-button, .github-button"
+  );
 
   image?.addEventListener("error", () => {
     console.error("me1.jpg 이미지를 찾을 수 없습니다.");
   });
 
-  actionButtons.forEach((button) => {
-    button.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
+  hoverButtons.forEach((button) => {
+    button.style.transition =
+      "transform 0.25s ease, box-shadow 0.25s ease";
 
     button.addEventListener("mouseenter", () => {
       button.style.transform = "translateY(-5px) scale(1.03)";
-      button.style.boxShadow = "0 12px 30px rgba(0, 0, 0, 0.12)";
+      button.style.boxShadow = "0 12px 30px rgba(0,0,0,0.12)";
     });
 
     button.addEventListener("mouseleave", () => {
@@ -33,15 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
         await navigator.clipboard.writeText(email);
 
         copyEmailButton.textContent = "✓ 이메일 복사 완료";
-        copyEmailButton.disabled = true;
 
         setTimeout(() => {
           copyEmailButton.textContent = originalText;
-          copyEmailButton.disabled = false;
         }, 2000);
+
       } catch (error) {
         console.error("이메일 복사 실패:", error);
-        alert("이메일 복사에 실패했습니다. 직접 복사해주세요.");
+        alert("이메일 복사에 실패했습니다.");
       }
     });
   }
